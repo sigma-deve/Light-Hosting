@@ -32,26 +32,26 @@
     <canvas id="bgCanvas"></canvas>
     
     <div id="ui-wrapper">
-        <section id="page1" class="page active">
+        <section id="p1" class="page active">
             <h1 class="text-7xl md:text-9xl font-black neon-text mb-6 drag-title">LIGHT</h1>
             <p class="text-cyan-400 tracking-[10px] text-xs mb-12 font-bold uppercase">System Initialization Ready</p>
-            <button type="button" onclick="checkAuthAndProceed()" class="btn-main">Establish Link</button>
+            <button type="button" onclick="entryCheck()" class="btn-main">Establish Link</button>
         </section>
 
-        <section id="page2" class="page">
+        <section id="p2" class="page">
             <div class="glass-box w-full max-w-md text-center">
-                <h2 id="auth-title" class="text-3xl font-black mb-6 italic uppercase">Member Sign In</h2>
+                <h2 id="at" class="text-3xl font-black mb-6 italic uppercase">Member Sign In</h2>
                 <div class="space-y-4">
-                    <input type="email" id="userEmail" placeholder="GMAIL ADDRESS (@gmail.com)" required>
-                    <input type="password" id="userPass" placeholder="ACCESS KEY" required>
-                    <p id="errorMsg" class="text-red-500 text-[10px] hidden uppercase font-bold italic">Invalid Gmail Format!</p>
-                    <button type="button" onclick="handleLogin()" class="btn-main w-full !py-3">Verify Identity</button>
-                    <p class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer" onclick="toggleAuth()">New User? Create Account</p>
+                    <input type="email" id="u_em" placeholder="GMAIL ADDRESS (@gmail.com)" required>
+                    <input type="password" id="u_ps" placeholder="ACCESS KEY" required>
+                    <p id="err" class="text-red-500 text-[10px] hidden uppercase font-bold italic">Invalid Gmail Format!</p>
+                    <button type="button" onclick="authProcess()" class="btn-main w-full !py-3">Verify Identity</button>
+                    <p class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer" onclick="tgl()">New User? Create Account</p>
                 </div>
             </div>
         </section>
 
-        <section id="page3" class="page">
+        <section id="p3" class="page">
             <video class="video-bg" autoplay muted loop playsinline>
                 <source src="InShot_20260511_093154374.mp4" type="video/mp4">
             </video>
@@ -60,29 +60,29 @@
                 <p class="text-cyan-400 text-[11px] mb-8 uppercase font-bold">Join Server to Activate Console</p>
                 <div class="space-y-6">
                     <a href="https://discord.gg/J4MvHhgrg7" target="_blank" class="block"><button type="button" class="btn-main w-full !py-4">Join Discord</button></a>
-                    <button type="button" onclick="showPage('page4')" class="btn-main w-full !bg-transparent !text-cyan-400 !border-2 !border-cyan-400">Continue to Dashboard</button>
+                    <button type="button" onclick="nav('p4')" class="btn-main w-full !bg-transparent !text-cyan-400 !border-2 !border-cyan-400">Continue to Dashboard</button>
                 </div>
             </div>
         </section>
 
-        <section id="page4" class="page">
+        <section id="p4" class="page">
             <div class="w-full max-w-5xl px-6 flex justify-between items-center mb-10">
                 <h2 class="text-5xl font-black neon-text italic drag-title">Database</h2>
-                <button onclick="logout()" class="text-[10px] border border-red-500 text-red-500 px-4 py-1 rounded hover:bg-red-500 hover:text-white transition uppercase font-bold">Terminate Session</button>
+                <button onclick="killSession()" class="text-[10px] border border-red-500 text-red-500 px-4 py-1 rounded hover:bg-red-500 hover:text-white transition uppercase font-bold">Terminate Session</button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl px-6">
-                <div onclick="showPage('page5')" class="glass-box cursor-pointer border-l-4 border-l-cyan-500 hover:scale-105 transition-transform text-center">
+                <div onclick="nav('p5')" class="glass-box cursor-pointer border-l-4 border-l-cyan-500 hover:scale-105 transition-transform text-center">
                     <h3 class="text-4xl font-black text-cyan-400 uppercase">Performance</h3>
                     <p class="text-[10px] mt-2 opacity-50 tracking-[3px]">NVMe SSD • HIGHER CPU</p>
                 </div>
-                <div onclick="showPage('page6')" class="glass-box cursor-pointer border-l-4 border-l-yellow-500 hover:scale-105 transition-transform text-center">
+                <div onclick="nav('p6')" class="glass-box cursor-pointer border-l-4 border-l-yellow-500 hover:scale-105 transition-transform text-center">
                     <h3 class="text-4xl font-black text-yellow-500 uppercase">Budget</h3>
                     <p class="text-[10px] mt-2 opacity-50 tracking-[3px]">STABLE ECONOMIC NODES</p>
                 </div>
             </div>
         </section>
 
-        <section id="page5" class="page">
+        <section id="p5" class="page">
             <h2 class="text-4xl font-black neon-text mb-12 italic">Performance Catalog</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4">
                 <div class="plan-card">
@@ -117,136 +117,95 @@
                     <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
                 </div>
             </div>
-            <button onclick="showPage('page4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
+            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
         </section>
 
-        <section id="page6" class="page">
+        <section id="p6" class="page">
             <h2 class="text-4xl font-black neon-text mb-12 italic text-yellow-500">Budget Nodes</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 w-full max-w-7xl px-4">
-                <div class="plan-card">
-                    <h5 class="font-bold">DIRT</h5>
-                    <p class="text-cyan-400 text-xl font-black">₹25/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li><li>99.9%</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a>
-                </div>
-                <div class="plan-card">
-                    <h5 class="font-bold">STONE</h5>
-                    <p class="text-cyan-400 text-xl font-black">₹50/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li><li>99.9%</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a>
-                </div>
-                <div class="plan-card">
-                    <h5 class="font-bold">IRON</h5>
-                    <p class="text-cyan-400 text-xl font-black">₹120/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li><li>99.9%</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a>
-                </div>
-                <div class="plan-card">
-                    <h5 class="font-bold">REDSTONE</h5>
-                    <p class="text-cyan-400 text-xl font-black">₹170/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li><li>99.9%</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a>
-                </div>
-                <div class="plan-card">
-                    <h5 class="font-bold">DIAMOND</h5>
-                    <p class="text-cyan-400 text-xl font-black">₹210/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li><li>99.9%</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a>
-                </div>
+                <div class="plan-card"><h5 class="font-bold">DIRT</h5><p class="text-cyan-400 text-xl font-black">₹25/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
+                <div class="plan-card"><h5 class="font-bold">STONE</h5><p class="text-cyan-400 text-xl font-black">₹50/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
+                <div class="plan-card"><h5 class="font-bold">IRON</h5><p class="text-cyan-400 text-xl font-black">₹120/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
+                <div class="plan-card"><h5 class="font-bold">REDSTONE</h5><p class="text-cyan-400 text-xl font-black">₹170/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
+                <div class="plan-card"><h5 class="font-bold">DIAMOND</h5><p class="text-cyan-400 text-xl font-black">₹210/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
                 <div class="plan-card border-yellow-600 border-2">
                     <div class="badge !bg-yellow-500">ELITE</div>
                     <h5 class="font-bold">NETHERITE</h5>
                     <p class="text-cyan-400 text-xl font-black">₹300/mo</p>
                     <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>50GB RAM</li><li>100GB SSD</li><li>700% CPU</li><li>24/7 ONLINE</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER</button></a>
+                    <a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER</button></a>
                 </div>
             </div>
-            <button onclick="showPage('page4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
+            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
         </section>
     </div>
 
     <script>
-        const cursor = document.getElementById('cursor-glow');
-        const dragTitles = document.querySelectorAll('.drag-title');
+        const c = document.getElementById('cursor-glow');
+        const dt = document.querySelectorAll('.drag-title');
 
         window.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.5 });
-            const xMove = (e.clientX - window.innerWidth / 2) / 30;
-            const yMove = (e.clientY - window.innerHeight / 2) / 30;
-            dragTitles.forEach(title => {
-                gsap.to(title, { x: xMove, y: yMove, duration: 0.4, ease: "power2.out" });
-            });
+            gsap.to(c, { x: e.clientX, y: e.clientY, duration: 0.5 });
+            const x = (e.clientX - window.innerWidth / 2) / 30;
+            const y = (e.clientY - window.innerHeight / 2) / 30;
+            dt.forEach(t => { gsap.to(t, { x, y, duration: 0.4, ease: "power2.out" }); });
         });
 
-        // LOGIN SYSTEM WITH PERSISTENCE & VALIDATION
-        function handleLogin() {
-            const email = document.getElementById('userEmail').value;
-            const pass = document.getElementById('userPass').value;
-            const error = document.getElementById('errorMsg');
-
-            if (email.endsWith('@gmail.com') && pass.length > 0) {
-                localStorage.setItem('user_session', 'active');
-                localStorage.setItem('user_email', email);
-                error.classList.add('hidden');
-                showPage('page3');
+        function authProcess() {
+            const em = document.getElementById('u_em').value;
+            const ps = document.getElementById('u_ps').value;
+            const er = document.getElementById('err');
+            if (em.endsWith('@gmail.com') && ps.length > 0) {
+                localStorage.setItem('_sys_s', 'active');
+                er.classList.add('hidden');
+                nav('p3');
             } else {
-                error.classList.remove('hidden');
-                gsap.fromTo("#page2 .glass-box", {x: -10}, {x: 10, duration: 0.1, repeat: 5, yoyo: true});
+                er.classList.remove('hidden');
+                gsap.fromTo(".glass-box", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
             }
         }
 
-        function checkAuthAndProceed() {
-            if (localStorage.getItem('user_session') === 'active') {
-                showPage('page4'); 
-            } else {
-                showPage('page2');
-            }
+        function entryCheck() {
+            if (localStorage.getItem('_sys_s') === 'active') nav('p4');
+            else nav('p2');
         }
 
-        function logout() {
-            localStorage.removeItem('user_session');
-            localStorage.removeItem('user_email');
-            showPage('page1');
+        function killSession() {
+            localStorage.removeItem('_sys_s');
+            nav('p1');
         }
 
-        function toggleAuth() {
-            const title = document.getElementById('auth-title');
-            title.innerText = (title.innerText === "Member Sign In") ? "Create Account" : "Member Sign In";
+        function tgl() {
+            const t = document.getElementById('at');
+            t.innerText = (t.innerText.includes("Sign In")) ? "Create Account" : "Member Sign In";
         }
 
-        function showPage(pageId) {
+        function nav(id) {
             document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
-            const target = document.getElementById(pageId);
-            target.style.display = 'flex';
-            setTimeout(() => target.classList.add('active'), 10);
-            document.getElementById('ui-wrapper').scrollTop = 0;
-            gsap.fromTo(target, {opacity: 0, scale: 0.95}, {opacity: 1, scale: 1, duration: 0.5});
+            const t = document.getElementById(id);
+            t.style.display = 'flex';
+            setTimeout(() => t.classList.add('active'), 10);
+            gsap.fromTo(t, {opacity: 0, scale: 0.98}, {opacity: 1, scale: 1, duration: 0.4});
         }
 
-        // BACKGROUND STARS
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, stars = [];
+        const cv = document.getElementById('bgCanvas');
+        const x = cv.getContext('2d');
+        let w, h, s = [];
         function init() {
-            width = window.innerWidth; height = window.innerHeight;
-            canvas.width = width; canvas.height = height;
-            stars = Array.from({length: 100}, () => ({ x: Math.random()*width, y: Math.random()*height, size: Math.random()*2, speed: Math.random()*0.5 }));
+            w = window.innerWidth; h = window.innerHeight;
+            cv.width = w; cv.height = h;
+            s = Array.from({length: 80}, () => ({ x: Math.random()*w, y: Math.random()*h, sz: Math.random()*2, sp: Math.random()*0.4 }));
         }
-        function animate() {
-            ctx.fillStyle = '#010815'; ctx.fillRect(0,0,width,height);
-            ctx.fillStyle = '#00e0ff';
-            stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI*2); ctx.fill(); s.y += s.speed; if(s.y > height) s.y = 0; });
-            requestAnimationFrame(animate);
+        function run() {
+            x.fillStyle = '#010815'; x.fillRect(0,0,w,h);
+            x.fillStyle = '#00e0ff';
+            s.forEach(i => { x.beginPath(); x.arc(i.x, i.y, i.sz, 0, Math.PI*2); x.fill(); i.y += i.sp; if(i.y > h) i.y = 0; });
+            requestAnimationFrame(run);
         }
         window.addEventListener('resize', init);
-        init(); animate();
+        init(); run();
 
-        // AUTO-LOGIN ON LOAD
-        window.onload = () => {
-            if (localStorage.getItem('user_session') === 'active') {
-                showPage('page4');
-            }
-        };
+        window.onload = () => { if (localStorage.getItem('_sys_s') === 'active') nav('p4'); };
     </script>
 </body>
 </html>

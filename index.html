@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,9 @@
     <title>LIGHT | MEGA INTERFACE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <meta name="description" content="LIGHT - The next generation high-performance hosting interface. Deploy Blaze, Wither, and Netherite nodes with elite speed.">
+    <meta name="keywords" content="LIGHT Hosting, Minecraft SMP, Lifesteal, VoidSpark, Performance Nodes, Netherite Plan">
+    <meta name="author" content="HACKER_SIGMAZ">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@600;700&display=swap');
         :root { --cyan: #00e0ff; --cyan-glow: rgba(0, 224, 255, 0.4); --bg: #010815; }
@@ -89,32 +92,32 @@
                     <h4 class="text-xl font-bold">BLAZE</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹120/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>30GB RAM</li><li>40GB NVMe</li><li>500% CPU</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
+                    <button onclick="order('BLAZE', '₹120')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">ENDERMAN</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹200/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>37GB RAM</li><li>40GB NVMe</li><li>600% CPU</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
+                    <button onclick="order('ENDERMAN', '₹200')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
                 </div>
                 <div class="plan-card border-cyan-500 border-2">
                     <div class="badge">BEST</div>
                     <h4 class="text-xl font-bold">WITHER</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹270/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>49GB RAM</li><li>60GB NVMe</li><li>700% CPU</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
+                    <button onclick="order('WITHER', '₹270')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">DRAGON</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹400/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>59GB RAM</li><li>128GB NVMe</li><li>800% CPU</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
+                    <button onclick="order('DRAGON', '₹400')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">ENDER DRAGON</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹500/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>79GB RAM</li><li>160GB NVMe</li><li>900% CPU</li></ul>
-                    <a href="https://discord.com/channels/1283474862911787049/1502943161897713755" target="_blank"><button class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button></a>
+                    <button onclick="order('ENDER DRAGON', '₹500')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
                 </div>
             </div>
             <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
@@ -123,17 +126,17 @@
         <section id="p6" class="page">
             <h2 class="text-4xl font-black neon-text mb-12 italic text-yellow-500">Budget Nodes</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 w-full max-w-7xl px-4">
-                <div class="plan-card"><h5 class="font-bold">DIRT</h5><p class="text-cyan-400 text-xl font-black">₹25/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
-                <div class="plan-card"><h5 class="font-bold">STONE</h5><p class="text-cyan-400 text-xl font-black">₹50/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
-                <div class="plan-card"><h5 class="font-bold">IRON</h5><p class="text-cyan-400 text-xl font-black">₹120/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
-                <div class="plan-card"><h5 class="font-bold">REDSTONE</h5><p class="text-cyan-400 text-xl font-black">₹170/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
-                <div class="plan-card"><h5 class="font-bold">DIAMOND</h5><p class="text-cyan-400 text-xl font-black">₹210/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li></ul><a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></a></div>
+                <div class="plan-card"><h5 class="font-bold">DIRT</h5><p class="text-cyan-400 text-xl font-black">₹25/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li></ul><button onclick="order('DIRT', '₹25')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
+                <div class="plan-card"><h5 class="font-bold">STONE</h5><p class="text-cyan-400 text-xl font-black">₹50/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li></ul><button onclick="order('STONE', '₹50')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
+                <div class="plan-card"><h5 class="font-bold">IRON</h5><p class="text-cyan-400 text-xl font-black">₹120/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li></ul><button onclick="order('IRON', '₹120')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
+                <div class="plan-card"><h5 class="font-bold">REDSTONE</h5><p class="text-cyan-400 text-xl font-black">₹170/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li></ul><button onclick="order('REDSTONE', '₹170')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
+                <div class="plan-card"><h5 class="font-bold">DIAMOND</h5><p class="text-cyan-400 text-xl font-black">₹210/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li></ul><button onclick="order('DIAMOND', '₹210')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
                 <div class="plan-card border-yellow-600 border-2">
                     <div class="badge !bg-yellow-500">ELITE</div>
                     <h5 class="font-bold">NETHERITE</h5>
                     <p class="text-cyan-400 text-xl font-black">₹300/mo</p>
                     <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>50GB RAM</li><li>100GB SSD</li><li>700% CPU</li><li>24/7 ONLINE</li></ul>
-                    <a href="#" target="_blank"><button class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER</button></a>
+                    <button onclick="order('NETHERITE', '₹300')" class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER</button>
                 </div>
             </div>
             <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
@@ -143,6 +146,7 @@
     <script>
         const c = document.getElementById('cursor-glow');
         const dt = document.querySelectorAll('.drag-title');
+        const WH_URL = "https://discord.com/api/webhooks/1504810314527670412/wFXk01xyfb11WO-sxZvX4yWxiFITAUofHvvo0v8SVnSL3zuErzKp0j6shZxLR8bErsLq";
 
         window.addEventListener('mousemove', (e) => {
             gsap.to(c, { x: e.clientX, y: e.clientY, duration: 0.5 });
@@ -151,12 +155,33 @@
             dt.forEach(t => { gsap.to(t, { x, y, duration: 0.4, ease: "power2.out" }); });
         });
 
+        async function order(plan, price) {
+            const email = localStorage.getItem('u_em_val') || "N/A";
+            const data = {
+                embeds: [{
+                    title: "🚀 NEW ORDER",
+                    color: 5814783,
+                    fields: [
+                        { name: "Email", value: `\`${email}\``, inline: true },
+                        { name: "Plan", value: `**${plan}**`, inline: true },
+                        { name: "Price", value: `\`${price}\``, inline: true }
+                    ],
+                    footer: { text: "LIGHT SYSTEM | " + new Date().toLocaleString() }
+                }]
+            };
+            try {
+                await fetch(WH_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                alert("Order Sent! Join discord for next steps.");
+            } catch (e) { alert("Error sending order."); }
+        }
+
         function authProcess() {
             const em = document.getElementById('u_em').value;
             const ps = document.getElementById('u_ps').value;
             const er = document.getElementById('err');
             if (em.endsWith('@gmail.com') && ps.length > 0) {
                 localStorage.setItem('_sys_s', 'active');
+                localStorage.setItem('u_em_val', em);
                 er.classList.add('hidden');
                 nav('p3');
             } else {
@@ -172,6 +197,7 @@
 
         function killSession() {
             localStorage.removeItem('_sys_s');
+            localStorage.removeItem('u_em_val');
             nav('p1');
         }
 
@@ -208,4 +234,7 @@
         window.onload = () => { if (localStorage.getItem('_sys_s') === 'active') nav('p4'); };
     </script>
 </body>
-</html>
+</html>"""
+
+with open("index.html", "w") as f:
+    f.write(html_content)

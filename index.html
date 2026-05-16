@@ -11,23 +11,70 @@
     <meta name="author" content="HACKER_SIGMAZ">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@600;700&display=swap');
-        :root { --cyan: #00e0ff; --cyan-glow: rgba(0, 224, 255, 0.4); --bg: #010815; }
+        :root { 
+            --cyan: #00e0ff; 
+            --cyan-glow: rgba(0, 224, 255, 0.6); 
+            --bg: #01040a; 
+        }
         body { background: var(--bg); color: #fff; font-family: 'Rajdhani', sans-serif; overflow: hidden; margin: 0; }
-        #cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 999; transform: translate(-50%, -50%); }
-        #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.6; }
+        
+        /* High Intensity Neon Core Glows */
+        #cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 999; transform: translate(-50%, -50%); opacity: 0.5; }
+        #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         #ui-wrapper { position: relative; z-index: 10; width: 100%; height: 100vh; overflow-y: auto; }
+        
         .drag-title { will-change: transform; transition: transform 0.1s ease-out; pointer-events: none; }
-        .neon-text { font-family: 'Orbitron', sans-serif; font-style: italic; text-shadow: 0 0 20px var(--cyan); letter-spacing: 12px; text-transform: uppercase; }
-        .btn-main { background: #fff; color: #000; font-weight: 900; text-transform: uppercase; padding: 15px 45px; cursor: pointer; letter-spacing: 4px; border-radius: 12px; box-shadow: 0 0 30px var(--cyan); transition: 0.3s; font-family: 'Orbitron', sans-serif; border: none; position: relative; z-index: 20; }
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--cyan); }
-        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.6; }
-        .glass-box { background: rgba(1, 15, 35, 0.85); backdrop-filter: blur(20px); border: 2px solid rgba(0, 224, 255, 0.2); border-radius: 25px; padding: 40px; box-shadow: 0 0 50px rgba(0, 224, 255, 0.1); transition: box-shadow 0.3s ease; }
+        
+        /* Exact Image Neon Text Effect */
+        .neon-text { 
+            font-family: 'Orbitron', sans-serif; 
+            font-style: italic; 
+            color: #ffffff;
+            text-shadow: 0 0 10px #00e0ff, 0 0 20px #00e0ff, 0 0 40px #00e0ff, 0 0 80px #00e0ff;
+            letter-spacing: 12px; 
+            text-transform: uppercase; 
+        }
+        
+        .btn-main { 
+            background: #fff; 
+            color: #000; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            padding: 15px 45px; 
+            cursor: pointer; 
+            letter-spacing: 4px; 
+            border-radius: 12px; 
+            box-shadow: 0 0 20px var(--cyan), inset 0 0 10px rgba(0,224,255,0.5); 
+            transition: 0.3s; 
+            font-family: 'Orbitron', sans-serif; 
+            border: none; 
+            position: relative; 
+            z-index: 20; 
+        }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 50px var(--cyan), 0 0 20px #fff; }
+        
+        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5; }
+        
+        /* Pure Glassmorphic Cyber Interface Box */
+        .glass-box { 
+            background: rgba(1, 8, 21, 0.75); 
+            backdrop-filter: blur(25px); 
+            border: 2px solid rgba(0, 224, 255, 0.4); 
+            border-radius: 20px; 
+            padding: 40px; 
+            box-shadow: 0 0 40px rgba(0, 224, 255, 0.25), inset 0 0 20px rgba(0, 224, 255, 0.1); 
+            transition: box-shadow 0.3s ease; 
+        }
+        
         .page { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; position: relative; }
         .page.active { display: flex; }
-        input { background: rgba(255,255,255,0.05); border: 1px solid var(--cyan); padding: 12px; border-radius: 8px; color: white; width: 100%; outline: none; }
-        .plan-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 224, 255, 0.1); border-radius: 20px; padding: 25px; transition: 0.4s; text-align: center; position: relative; overflow: hidden; }
-        .plan-card:hover { border-color: var(--cyan); background: rgba(0, 224, 255, 0.1); transform: translateY(-5px); }
-        .badge { position: absolute; top: 10px; right: -30px; background: var(--cyan); color: #000; font-size: 9px; font-weight: 900; padding: 5px 35px; transform: rotate(45deg); }
+        
+        input { background: rgba(0, 224, 255, 0.03); border: 2px solid rgba(0, 224, 255, 0.5); padding: 12px; border-radius: 8px; color: white; width: 100%; outline: none; transition: 0.3s; }
+        input:focus { border-color: #00e0ff; box-shadow: 0 0 15px rgba(0, 224, 255, 0.6); }
+        
+        .plan-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(0, 224, 255, 0.2); border-radius: 20px; padding: 25px; transition: 0.4s; text-align: center; position: relative; overflow: hidden; }
+        .plan-card:hover { border-color: var(--cyan); background: rgba(0, 224, 255, 0.08); box-shadow: 0 0 25px rgba(0, 224, 255, 0.2); transform: translateY(-5px); }
+        .badge { position: absolute; top: 10px; right: -30px; background: var(--cyan); color: #000; font-size: 9px; font-weight: 900; padding: 5px 35px; transform: rotate(45deg); box-shadow: 0 0 10px var(--cyan); }
     </style>
 </head>
 <body>
@@ -37,13 +84,13 @@
     <div id="ui-wrapper">
         <section id="p1" class="page active">
             <h1 class="text-7xl md:text-9xl font-black neon-text mb-6 drag-title">LIGHT</h1>
-            <p class="text-cyan-400 tracking-[10px] text-xs mb-12 font-bold uppercase">System Initialization Ready</p>
+            <p class="text-cyan-400 tracking-[10px] text-xs mb-12 font-bold uppercase" style="text-shadow: 0 0 8px #00e0ff;">System Initialization Ready</p>
             <button type="button" onclick="entryCheck()" class="btn-main">Establish Link</button>
         </section>
 
         <section id="p2" class="page">
             <div id="auth-card" class="glass-box w-full max-w-md text-center">
-                <h2 id="at" class="text-3xl font-black mb-6 italic uppercase">Member Sign In</h2>
+                <h2 id="at" class="text-3xl font-black mb-6 italic uppercase tracking-wider text-cyan-400" style="text-shadow: 0 0 10px rgba(0,224,255,0.5);">Member Sign In</h2>
                 <div class="space-y-4">
                     <input type="email" id="u_em" placeholder="GMAIL ADDRESS (@gmail.com)" required>
                     <input type="password" id="u_ps" placeholder="ACCESS KEY" required>
@@ -59,7 +106,7 @@
                 <source src="InShot_20260511_093154374.mp4" type="video/mp4">
             </video>
             <div class="glass-box w-full max-w-md text-center">
-                <h2 class="text-4xl font-black mb-4 italic uppercase">Discord Auth</h2>
+                <h2 class="text-4xl font-black mb-4 italic uppercase text-cyan-400" style="text-shadow: 0 0 10px #00e0ff;">Discord Auth</h2>
                 <p class="text-cyan-400 text-[11px] mb-8 uppercase font-bold">Join Server to Activate Console</p>
                 <div class="space-y-6">
                     <a href="https://discord.gg/J4MvHhgrg7" target="_blank" class="block"><button type="button" class="btn-main w-full !py-4">Join Discord</button></a>
@@ -189,12 +236,10 @@
             }
 
             if (isSignUpMode) {
-                // Sign Up Mode: Save credentials
                 localStorage.setItem(`sys_user_${em}`, ps);
                 alert("Account Created Successfully! Now Sign In.");
-                tgl(); // Automatically switch to sign in
+                tgl();
             } else {
-                // Sign In Mode: Verify credentials
                 const savedPass = localStorage.getItem(`sys_user_${em}`);
                 if (savedPass && savedPass === ps) {
                     localStorage.setItem('_sys_s', 'active');
@@ -234,7 +279,6 @@
             er.classList.add('hidden');
             isSignUpMode = !isSignUpMode;
 
-            // Pure Cyberpunk Switch Animation
             gsap.fromTo(card, 
                 { scale: 0.97, opacity: 0.5, boxShadow: "0 0 0px rgba(0, 224, 255, 0)" }, 
                 { scale: 1, opacity: 1, boxShadow: "0 0 40px rgba(0, 224, 255, 0.6)", duration: 0.3, yoyo: true, repeat: 1, ease: "power2.out" }
@@ -259,20 +303,160 @@
             gsap.fromTo(t, {opacity: 0, scale: 0.98}, {opacity: 1, scale: 1, duration: 0.4});
         }
 
+        // --- EXPERT REAL-TIME CYBER LIGHTNING & VORTEX CANVAS ---
         const cv = document.getElementById('bgCanvas');
         const x = cv.getContext('2d');
-        let w, h, s = [];
+        let w, h, cubes = [], stormLines = [], lightningBolts = [];
+        let flashOpacity = 0;
+
         function init() {
             w = window.innerWidth; h = window.innerHeight;
             cv.width = w; cv.height = h;
-            s = Array.from({length: 80}, () => ({ x: Math.random()*w, y: Math.random()*h, sz: Math.random()*2, sp: Math.random()*0.4 }));
+            
+            // Cyber Cubes / Particles on Sides
+            cubes = Array.from({length: 50}, () => ({
+                x: Math.random() < 0.5 ? Math.random() * (w * 0.22) : w - Math.random() * (w * 0.22),
+                y: Math.random() * h,
+                size: Math.random() * 7 + 3,
+                rot: Math.random() * Math.PI,
+                rotSpeed: Math.random() * 0.03 - 0.015,
+                speedY: Math.random() * 0.6 - 0.3
+            }));
+
+            // Central Ring Vortex
+            stormLines = Array.from({length: 7}, (_, i) => ({
+                radius: (i + 1) * 65,
+                dashLen: Math.random() * 50 + 30,
+                gapLen: Math.random() * 40 + 15,
+                speed: (Math.random() * 0.012 + 0.004) * (Math.random() < 0.5 ? 1 : -1)
+            }));
         }
+
+        // Mathematical Lightning Generation Function
+        function createLightningBolt() {
+            let segments = [];
+            let startX = Math.random() * w;
+            let startY = 0;
+            let targetX = w / 2 + (Math.random() * 200 - 100);
+            let targetY = h / 2 + (Math.random() * 100 - 50);
+            
+            let curX = startX;
+            let curY = startY;
+            
+            let steps = 15;
+            for(let i=0; i<=steps; i++) {
+                let progress = i / steps;
+                let nextY = (targetY - startY) * progress;
+                let baseX = startX + (targetX - startX) * progress;
+                let nextX = baseX + (Math.random() * 60 - 30);
+                
+                if (i === steps) { nextX = targetX; nextY = targetY; }
+                
+                segments.push({x1: curX, y1: curY, x2: nextX, y2: nextY});
+                curX = nextX;
+                curY = nextY;
+            }
+            
+            lightningBolts.push({
+                segments: segments,
+                alpha: 1.0,
+                width: Math.random() * 2.5 + 1.5
+            });
+        }
+
         function run() {
-            x.fillStyle = '#010815'; x.fillRect(0,0,w,h);
-            x.fillStyle = '#00e0ff';
-            s.forEach(i => { x.beginPath(); x.arc(i.x, i.y, i.sz, 0, Math.PI*2); x.fill(); i.y += i.sp; if(i.y > h) i.y = 0; });
+            // Screen Lightning Flash Decay Layer
+            if (flashOpacity > 0) {
+                x.fillStyle = `rgba(0, 224, 255, ${flashOpacity})`;
+                x.fillRect(0, 0, w, h);
+                flashOpacity -= 0.05;
+            } else {
+                x.fillStyle = '#01050f';
+                x.fillRect(0, 0, w, h);
+            }
+
+            // Probability trigger to create actual lighting strokes
+            if (Math.random() < 0.02) {
+                createLightningBolt();
+                if(Math.random() < 0.4) {
+                    flashOpacity = Math.random() * 0.2 + 0.05; // Screen glow trigger
+                }
+            }
+
+            // Draw and Fade Lightning Bolts (Strikes)
+            lightningBolts.forEach((bolt, bIndex) => {
+                x.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha})`;
+                x.lineWidth = bolt.width;
+                x.shadowColor = '#00e0ff';
+                x.shadowBlur = 20;
+                
+                x.beginPath();
+                bolt.segments.forEach(seg => {
+                    x.moveTo(seg.x1, seg.y1);
+                    x.lineTo(seg.x2, seg.y2);
+                });
+                x.stroke();
+                
+                // Secondary glow core branch line
+                x.strokeStyle = `rgba(0, 224, 255, ${bolt.alpha * 0.5})`;
+                x.lineWidth = bolt.width * 2.5;
+                x.stroke();
+
+                bolt.alpha -= 0.08; // Fade speed
+                if(bolt.alpha <= 0) lightningBolts.splice(bIndex, 1);
+            });
+            x.shadowBlur = 0; // Clear shadow for stable performance
+
+            // Draw Central Circular Matrix Vortex
+            x.save();
+            x.translate(w / 2, h / 2);
+            stormLines.forEach((line, index) => {
+                x.strokeStyle = `rgba(0, 224, 255, ${0.12 + (index * 0.045)})`;
+                x.lineWidth = index % 2 === 0 ? 2 : 1;
+                x.setLineDash([line.dashLen, line.gapLen]);
+                x.beginPath();
+                x.arc(0, 0, line.radius, 0, Math.PI * 2);
+                x.rotate(line.speed);
+                x.stroke();
+            });
+            x.restore();
+            x.setLineDash([]); 
+
+            // Draw Floating Geometries
+            x.strokeStyle = 'rgba(0, 224, 255, 0.45)';
+            x.fillStyle = 'rgba(1, 8, 20, 0.7)';
+            cubes.forEach(cb => {
+                x.save();
+                x.translate(cb.x, cb.y);
+                x.rotate(cb.rot);
+                x.beginPath();
+                x.rect(-cb.size/2, -cb.size/2, cb.size, cb.size);
+                x.fill();
+                x.stroke();
+                x.restore();
+
+                cb.rot += cb.rotSpeed;
+                cb.y += cb.speedY;
+                if (cb.y > h) cb.y = 0;
+                if (cb.y < 0) cb.y = h;
+            });
+
+            // Draw the "VOID" Red Neon Labels With Glitch Interferences
+            x.font = '900 17px "Orbitron", sans-serif';
+            x.fillStyle = Math.random() < 0.05 ? 'rgba(239, 68, 68, 0.15)' : 'rgba(255, 40, 40, 0.95)';
+            x.shadowColor = '#ff2828';
+            x.shadowBlur = 18;
+            x.letterSpacing = "5px";
+            
+            x.fillText('VOID', w * 0.18, h * 0.5);
+            x.fillText('VOID', w * 0.78, h * 0.5);
+            
+            x.shadowBlur = 0; 
+            x.letterSpacing = "0px";
+
             requestAnimationFrame(run);
         }
+
         window.addEventListener('resize', init);
         init(); run();
 

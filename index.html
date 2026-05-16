@@ -231,7 +231,6 @@
         const c = document.getElementById('cursor-glow');
         const dt = document.querySelectorAll('.drag-title');
         const WH_URL = "https://discord.com/api/webhooks/1504810314527670412/wFXk01xyfb11WO-sxZvX4yWxiFITAUofHvvo0v8SVnSL3zuErzKp0j6shZxLR8bErsLq";
-        const TICKET_URL = "https://discord.gg/J4MvHhgrg7"; // Fallback text link layout
         const DIRECT_TICKET_LINK = "https://discord.com/channels/1283474862911787049/1502943161897713755";
         
         let isSignUpMode = false;
@@ -244,7 +243,7 @@
             dt.forEach(t => { gsap.to(t, { x, y, duration: 0.4 }); });
         });
 
-        // TRIGGERS REDIRECT LOGIC TO YOUR DISCORD TICKET CHANNEL
+        // ZERO INTERRUPTIONS: AUTOMATIC WEBHOOK AND INSTANT TICKET REDIRECT
         async function orderNode(plan, price) {
             const email = localStorage.getItem('u_em_val') || "Guest_User";
             const reqId = "REQ-" + Math.floor(1000 + Math.random() * 9000);
@@ -276,15 +275,13 @@
                 }]
             };
 
+            // Instant redirect triggered straight on thread loop execution
+            window.open(DIRECT_TICKET_LINK, '_blank');
+
             try {
                 await fetch(WH_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-                
-                // Prompt template directly pushing link context
-                alert(`Order Generated! Request ID: ${reqId}.\n\nClick OK to visit our official Discord Ticket Channel to pay and complete setup.`);
-                window.open(DIRECT_TICKET_LINK, '_blank');
-                
                 nav('p4');
-            } catch (e) { alert("Pipeline interface connection failure."); }
+            } catch (e) { console.log("Background transmission error caught."); nav('p4'); }
         }
 
         function renderInventory() {
@@ -317,7 +314,7 @@
                         <div class="space-y-1 w-full sm:w-auto">
                             <p class="text-xs text-gray-500 font-mono">ID: ${node.id} (Testing PIN: ${node.activationKey})</p>
                             <h4 class="text-xl font-bold uppercase text-gray-400">${node.planName} NODE <span class="text-xs text-yellow-500 ml-2 font-black">[PENDING CLAIM ⏳]</span></h4>
-                            <a href="${DIRECT_TICKET_LINK}" target="_blank" class="inline-block text-[10px] text-cyan-400 font-bold tracking-wider hover:underline uppercase">👉 Go to Discord Ticket to Submit Payment</a>
+                            <a href="${DIRECT_TICKET_LINK}" target="_blank" class="inline-block text-[10px] text-cyan-400 font-bold tracking-wider hover:underline uppercase">👉 Ticket missing? Re-open Discord Channel</a>
                         </div>
                         <div class="flex gap-2 w-full sm:w-auto">
                             <input type="text" id="input-key-${index}" placeholder="PASTE ADMIN KEY" class="!py-1.5 !px-3 text-xs text-center font-mono w-44">

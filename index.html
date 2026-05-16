@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@ html_content = """<!DOCTYPE html>
         .btn-main { background: #fff; color: #000; font-weight: 900; text-transform: uppercase; padding: 15px 45px; cursor: pointer; letter-spacing: 4px; border-radius: 12px; box-shadow: 0 0 30px var(--cyan); transition: 0.3s; font-family: 'Orbitron', sans-serif; border: none; position: relative; z-index: 20; }
         .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 60px var(--cyan); }
         .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.6; }
-        .glass-box { background: rgba(1, 15, 35, 0.85); backdrop-filter: blur(20px); border: 2px solid rgba(0, 224, 255, 0.2); border-radius: 25px; padding: 40px; box-shadow: 0 0 50px rgba(0, 224, 255, 0.1); }
+        .glass-box { background: rgba(1, 15, 35, 0.85); backdrop-filter: blur(20px); border: 2px solid rgba(0, 224, 255, 0.2); border-radius: 25px; padding: 40px; box-shadow: 0 0 50px rgba(0, 224, 255, 0.1); transition: box-shadow 0.3s ease; }
         .page { display: none; min-height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; position: relative; }
         .page.active { display: flex; }
         input { background: rgba(255,255,255,0.05); border: 1px solid var(--cyan); padding: 12px; border-radius: 8px; color: white; width: 100%; outline: none; }
@@ -42,14 +42,14 @@ html_content = """<!DOCTYPE html>
         </section>
 
         <section id="p2" class="page">
-            <div class="glass-box w-full max-w-md text-center">
+            <div id="auth-card" class="glass-box w-full max-w-md text-center">
                 <h2 id="at" class="text-3xl font-black mb-6 italic uppercase">Member Sign In</h2>
                 <div class="space-y-4">
                     <input type="email" id="u_em" placeholder="GMAIL ADDRESS (@gmail.com)" required>
                     <input type="password" id="u_ps" placeholder="ACCESS KEY" required>
-                    <p id="err" class="text-red-500 text-[10px] hidden uppercase font-bold italic">Invalid Gmail Format!</p>
-                    <button type="button" onclick="authProcess()" class="btn-main w-full !py-3">Verify Identity</button>
-                    <p class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer" onclick="tgl()">New User? Create Account</p>
+                    <p id="err" class="text-red-500 text-[10px] hidden uppercase font-bold italic">Invalid Format or System Error!</p>
+                    <button type="button" id="auth-btn" onclick="authProcess()" class="btn-main w-full !py-3">Verify Identity</button>
+                    <p id="switch-txt" class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer hover:opacity-100 transition" onclick="tgl()">New User? Create Account (Register)</p>
                 </div>
             </div>
         </section>
@@ -147,6 +147,7 @@ html_content = """<!DOCTYPE html>
         const c = document.getElementById('cursor-glow');
         const dt = document.querySelectorAll('.drag-title');
         const WH_URL = "https://discord.com/api/webhooks/1504810314527670412/wFXk01xyfb11WO-sxZvX4yWxiFITAUofHvvo0v8SVnSL3zuErzKp0j6shZxLR8bErsLq";
+        let isSignUpMode = false;
 
         window.addEventListener('mousemove', (e) => {
             gsap.to(c, { x: e.clientX, y: e.clientY, duration: 0.5 });
@@ -176,17 +177,39 @@ html_content = """<!DOCTYPE html>
         }
 
         function authProcess() {
-            const em = document.getElementById('u_em').value;
+            const em = document.getElementById('u_em').value.trim();
             const ps = document.getElementById('u_ps').value;
             const er = document.getElementById('err');
-            if (em.endsWith('@gmail.com') && ps.length > 0) {
-                localStorage.setItem('_sys_s', 'active');
-                localStorage.setItem('u_em_val', em);
-                er.classList.add('hidden');
-                nav('p3');
-            } else {
+
+            if (!em.endsWith('@gmail.com') || ps.length === 0) {
+                er.innerText = "Invalid Gmail or Empty Password!";
                 er.classList.remove('hidden');
-                gsap.fromTo(".glass-box", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
+                gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
+                return;
+            }
+
+            if (isSignUpMode) {
+                // Sign Up Mode: Save credentials
+                localStorage.setItem(`sys_user_${em}`, ps);
+                alert("Account Created Successfully! Now Sign In.");
+                tgl(); // Automatically switch to sign in
+            } else {
+                // Sign In Mode: Verify credentials
+                const savedPass = localStorage.getItem(`sys_user_${em}`);
+                if (savedPass && savedPass === ps) {
+                    localStorage.setItem('_sys_s', 'active');
+                    localStorage.setItem('u_em_val', em);
+                    er.classList.add('hidden');
+                    nav('p3');
+                } else if (!savedPass) {
+                    er.innerText = "ACCOUNT NOT FOUND! REGISTER FIRST.";
+                    er.classList.remove('hidden');
+                    gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
+                } else {
+                    er.innerText = "WRONG ACCESS KEY!";
+                    er.classList.remove('hidden');
+                    gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
+                }
             }
         }
 
@@ -203,7 +226,29 @@ html_content = """<!DOCTYPE html>
 
         function tgl() {
             const t = document.getElementById('at');
-            t.innerText = (t.innerText.includes("Sign In")) ? "Create Account" : "Member Sign In";
+            const b = document.getElementById('auth-btn');
+            const st = document.getElementById('switch-txt');
+            const er = document.getElementById('err');
+            const card = document.getElementById('auth-card');
+
+            er.classList.add('hidden');
+            isSignUpMode = !isSignUpMode;
+
+            // Pure Cyberpunk Switch Animation
+            gsap.fromTo(card, 
+                { scale: 0.97, opacity: 0.5, boxShadow: "0 0 0px rgba(0, 224, 255, 0)" }, 
+                { scale: 1, opacity: 1, boxShadow: "0 0 40px rgba(0, 224, 255, 0.6)", duration: 0.3, yoyo: true, repeat: 1, ease: "power2.out" }
+            );
+
+            if (isSignUpMode) {
+                t.innerText = "Create Account";
+                b.innerText = "Register System";
+                st.innerText = "Already a Member? Sign In";
+            } else {
+                t.innerText = "Member Sign In";
+                b.innerText = "Verify Identity";
+                st.innerText = "New User? Create Account (Register)";
+            }
         }
 
         function nav(id) {
@@ -234,7 +279,4 @@ html_content = """<!DOCTYPE html>
         window.onload = () => { if (localStorage.getItem('_sys_s') === 'active') nav('p4'); };
     </script>
 </body>
-</html>"""
-
-with open("index.html", "w") as f:
-    f.write(html_content)
+</html>

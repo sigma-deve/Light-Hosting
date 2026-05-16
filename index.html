@@ -6,8 +6,8 @@
     <title>LIGHT | MEGA INTERFACE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <meta name="description" content="LIGHT - The next generation high-performance hosting interface. Deploy Blaze, Wither, and Netherite nodes with elite speed.">
-    <meta name="keywords" content="LIGHT Hosting, Minecraft SMP, Lifesteal, VoidSpark, Performance Nodes, Netherite Plan">
+    <meta name="description" content="LIGHT - High-performance hosting interface. Deploy Blaze, Wither, and Netherite nodes.">
+    <meta name="keywords" content="LIGHT Hosting, Minecraft SMP, Lifesteal, VoidSpark, Performance Nodes">
     <meta name="author" content="HACKER_SIGMAZ">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@600;700&display=swap');
@@ -18,14 +18,12 @@
         }
         body { background: var(--bg); color: #fff; font-family: 'Rajdhani', sans-serif; overflow: hidden; margin: 0; }
         
-        /* High Intensity Neon Core Glows */
         #cursor-glow { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 999; transform: translate(-50%, -50%); opacity: 0.5; }
         #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         #ui-wrapper { position: relative; z-index: 10; width: 100%; height: 100vh; overflow-y: auto; }
         
         .drag-title { will-change: transform; transition: transform 0.1s ease-out; pointer-events: none; }
         
-        /* Exact Image Neon Text Effect */
         .neon-text { 
             font-family: 'Orbitron', sans-serif; 
             font-style: italic; 
@@ -55,7 +53,6 @@
         
         .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.5; }
         
-        /* Pure Glassmorphic Cyber Interface Box */
         .glass-box { 
             background: rgba(1, 8, 21, 0.75); 
             backdrop-filter: blur(25px); 
@@ -90,13 +87,13 @@
 
         <section id="p2" class="page">
             <div id="auth-card" class="glass-box w-full max-w-md text-center">
-                <h2 id="at" class="text-3xl font-black mb-6 italic uppercase tracking-wider text-cyan-400" style="text-shadow: 0 0 10px rgba(0,224,255,0.5);">Member Sign In</h2>
+                <h2 id="at" class="text-3xl font-black mb-6 italic uppercase tracking-wider text-cyan-400">Member Sign In</h2>
                 <div class="space-y-4">
                     <input type="email" id="u_em" placeholder="GMAIL ADDRESS (@gmail.com)" required>
                     <input type="password" id="u_ps" placeholder="ACCESS KEY" required>
                     <p id="err" class="text-red-500 text-[10px] hidden uppercase font-bold italic">Invalid Format or System Error!</p>
                     <button type="button" id="auth-btn" onclick="authProcess()" class="btn-main w-full !py-3">Verify Identity</button>
-                    <p id="switch-txt" class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer hover:opacity-100 transition" onclick="tgl()">New User? Create Account (Register)</p>
+                    <p id="switch-txt" class="text-[10px] opacity-50 uppercase tracking-widest cursor-pointer hover:opacity-100 transition" onclick="tgl()">New User? Create Account</p>
                 </div>
             </div>
         </section>
@@ -106,7 +103,7 @@
                 <source src="InShot_20260511_093154374.mp4" type="video/mp4">
             </video>
             <div class="glass-box w-full max-w-md text-center">
-                <h2 class="text-4xl font-black mb-4 italic uppercase text-cyan-400" style="text-shadow: 0 0 10px #00e0ff;">Discord Auth</h2>
+                <h2 class="text-4xl font-black mb-4 italic uppercase text-cyan-400">Discord Auth</h2>
                 <p class="text-cyan-400 text-[11px] mb-8 uppercase font-bold">Join Server to Activate Console</p>
                 <div class="space-y-6">
                     <a href="https://discord.gg/J4MvHhgrg7" target="_blank" class="block"><button type="button" class="btn-main w-full !py-4">Join Discord</button></a>
@@ -116,18 +113,32 @@
         </section>
 
         <section id="p4" class="page">
-            <div class="w-full max-w-5xl px-6 flex justify-between items-center mb-10">
+            <div class="w-full max-w-5xl px-6 flex justify-between items-center mb-6">
                 <h2 class="text-5xl font-black neon-text italic drag-title">Database</h2>
                 <button onclick="killSession()" class="text-[10px] border border-red-500 text-red-500 px-4 py-1 rounded hover:bg-red-500 hover:text-white transition uppercase font-bold">Terminate Session</button>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-5xl px-6">
-                <div onclick="nav('p5')" class="glass-box cursor-pointer border-l-4 border-l-cyan-500 hover:scale-105 transition-transform text-center">
-                    <h3 class="text-4xl font-black text-cyan-400 uppercase">Performance</h3>
-                    <p class="text-[10px] mt-2 opacity-50 tracking-[3px]">NVMe SSD • HIGHER CPU</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl px-6 mb-8">
+                <div onclick="nav('p5')" class="glass-box cursor-pointer border-l-4 border-l-cyan-500 hover:scale-[1.02] transition text-center !p-6">
+                    <h3 class="text-3xl font-black text-cyan-400 uppercase">Performance Catalog</h3>
+                    <p class="text-[9px] mt-1 opacity-50 tracking-[3px]">NVMe SSD • HIGHER CPU</p>
                 </div>
-                <div onclick="nav('p6')" class="glass-box cursor-pointer border-l-4 border-l-yellow-500 hover:scale-105 transition-transform text-center">
-                    <h3 class="text-4xl font-black text-yellow-500 uppercase">Budget</h3>
-                    <p class="text-[10px] mt-2 opacity-50 tracking-[3px]">STABLE ECONOMIC NODES</p>
+                <div onclick="nav('p6')" class="glass-box cursor-pointer border-l-4 border-l-yellow-500 hover:scale-[1.02] transition text-center !p-6">
+                    <h3 class="text-3xl font-black text-yellow-500 uppercase">Budget Nodes</h3>
+                    <p class="text-[9px] mt-1 opacity-50 tracking-[3px]">STABLE ECONOMIC NODES</p>
+                </div>
+            </div>
+
+            <div class="w-full max-w-5xl px-6">
+                <div class="glass-box border border-gray-800 !p-6">
+                    <h3 class="text-xl font-bold uppercase tracking-wider text-gray-400 mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 inline-block animate-pulse"></span> YOUR NODE INSTANCES
+                    </h3>
+                    <div id="inventory-container" class="space-y-4">
+                        <div id="inv-empty" class="text-center py-6 border border-dashed border-gray-800 rounded-xl">
+                            <p class="text-sm uppercase text-gray-600 tracking-widest font-bold">No Active Requests. Select a plan above to generate an order.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,54 +150,80 @@
                     <h4 class="text-xl font-bold">BLAZE</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹120/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>30GB RAM</li><li>40GB NVMe</li><li>500% CPU</li></ul>
-                    <button onclick="order('BLAZE', '₹120')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
+                    <button onclick="orderNode('BLAZE', '₹120')" class="btn-main w-full mt-6 !py-2 !text-[10px]">ORDER NODE</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">ENDERMAN</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹200/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>37GB RAM</li><li>40GB NVMe</li><li>600% CPU</li></ul>
-                    <button onclick="order('ENDERMAN', '₹200')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
+                    <button onclick="orderNode('ENDERMAN', '₹200')" class="btn-main w-full mt-6 !py-2 !text-[10px]">ORDER NODE</button>
                 </div>
                 <div class="plan-card border-cyan-500 border-2">
                     <div class="badge">BEST</div>
                     <h4 class="text-xl font-bold">WITHER</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹270/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>49GB RAM</li><li>60GB NVMe</li><li>700% CPU</li></ul>
-                    <button onclick="order('WITHER', '₹270')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
+                    <button onclick="orderNode('WITHER', '₹270')" class="btn-main w-full mt-6 !py-2 !text-[10px]">ORDER NODE</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">DRAGON</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹400/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>59GB RAM</li><li>128GB NVMe</li><li>800% CPU</li></ul>
-                    <button onclick="order('DRAGON', '₹400')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
+                    <button onclick="orderNode('DRAGON', '₹400')" class="btn-main w-full mt-6 !py-2 !text-[10px]">ORDER NODE</button>
                 </div>
                 <div class="plan-card">
                     <h4 class="text-xl font-bold">ENDER DRAGON</h4>
                     <p class="text-cyan-400 text-2xl font-black">₹500/mo</p>
                     <ul class="text-[10px] mt-4 opacity-70 space-y-1"><li>79GB RAM</li><li>160GB NVMe</li><li>900% CPU</li></ul>
-                    <button onclick="order('ENDER DRAGON', '₹500')" class="btn-main w-full mt-6 !py-2 !text-[10px]">DEPLOY</button>
+                    <button onclick="orderNode('ENDER DRAGON', '₹500')" class="btn-main w-full mt-6 !py-2 !text-[10px]">ORDER NODE</button>
                 </div>
             </div>
-            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
+            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK TO DATABASE</button>
         </section>
 
         <section id="p6" class="page">
             <h2 class="text-4xl font-black neon-text mb-12 italic text-yellow-500">Budget Nodes</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 w-full max-w-7xl px-4">
-                <div class="plan-card"><h5 class="font-bold">DIRT</h5><p class="text-cyan-400 text-xl font-black">₹25/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li></ul><button onclick="order('DIRT', '₹25')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
-                <div class="plan-card"><h5 class="font-bold">STONE</h5><p class="text-cyan-400 text-xl font-black">₹50/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li></ul><button onclick="order('STONE', '₹50')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
-                <div class="plan-card"><h5 class="font-bold">IRON</h5><p class="text-cyan-400 text-xl font-black">₹120/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li></ul><button onclick="order('IRON', '₹120')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
-                <div class="plan-card"><h5 class="font-bold">REDSTONE</h5><p class="text-cyan-400 text-xl font-black">₹170/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li></ul><button onclick="order('REDSTONE', '₹170')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
-                <div class="plan-card"><h5 class="font-bold">DIAMOND</h5><p class="text-cyan-400 text-xl font-black">₹210/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li></ul><button onclick="order('DIAMOND', '₹210')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER</button></div>
+                <div class="plan-card"><h5 class="font-bold">DIRT</h5><p class="text-cyan-400 text-xl font-black">₹25/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>2.5GB RAM</li><li>10GB SSD</li><li>100% CPU</li></ul><button onclick="orderNode('DIRT', '₹25')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER NODE</button></div>
+                <div class="plan-card"><h5 class="font-bold">STONE</h5><p class="text-cyan-400 text-xl font-black">₹50/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>8GB RAM</li><li>20GB SSD</li><li>200% CPU</li></ul><button onclick="orderNode('STONE', '₹50')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER NODE</button></div>
+                <div class="plan-card"><h5 class="font-bold">IRON</h5><p class="text-cyan-400 text-xl font-black">₹120/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>14GB RAM</li><li>30GB SSD</li><li>300% CPU</li></ul><button onclick="orderNode('IRON', '₹120')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER NODE</button></div>
+                <div class="plan-card"><h5 class="font-bold">REDSTONE</h5><p class="text-cyan-400 text-xl font-black">₹170/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>30GB RAM</li><li>50GB SSD</li><li>400% CPU</li></ul><button onclick="orderNode('REDSTONE', '₹170')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER NODE</button></div>
+                <div class="plan-card"><h5 class="font-bold">DIAMOND</h5><p class="text-cyan-400 text-xl font-black">₹210/mo</p><ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>40GB RAM</li><li>80GB SSD</li><li>500% CPU</li></ul><button onclick="orderNode('DIAMOND', '₹210')" class="btn-main w-full mt-4 !py-1 !text-[9px]">ORDER NODE</button></div>
                 <div class="plan-card border-yellow-600 border-2">
                     <div class="badge !bg-yellow-500">ELITE</div>
                     <h5 class="font-bold">NETHERITE</h5>
                     <p class="text-cyan-400 text-xl font-black">₹300/mo</p>
-                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>50GB RAM</li><li>100GB SSD</li><li>700% CPU</li><li>24/7 ONLINE</li></ul>
-                    <button onclick="order('NETHERITE', '₹300')" class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER</button>
+                    <ul class="text-[9px] mt-3 opacity-70 space-y-1"><li>50GB RAM</li><li>100GB SSD</li><li>700% CPU</li></ul>
+                    <button onclick="orderNode('NETHERITE', '₹300')" class="btn-main w-full mt-4 !py-1 !text-[9px] !bg-yellow-500">ORDER NODE</button>
                 </div>
             </div>
-            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK</button>
+            <button onclick="nav('p4')" class="mt-10 opacity-50 hover:opacity-100 uppercase tracking-widest text-xs"><- BACK TO DATABASE</button>
+        </section>
+
+        <section id="p_dash" class="page">
+            <div class="w-full max-w-5xl px-6">
+                <div class="glass-box border-emerald-500 border-2">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <span class="bg-emerald-500 text-black font-black text-[9px] px-3 py-1 rounded">ONLINE</span>
+                            <h2 id="dash-title" class="text-4xl font-black text-white uppercase mt-1">SERVER CORE ACTIVE</h2>
+                        </div>
+                        <p id="dash-ip" class="text-xl font-mono text-cyan-400 font-bold">127.0.0.1:25565</p>
+                    </div>
+                    
+                    <div class="bg-black text-green-400 p-4 rounded-lg font-mono text-xs h-48 overflow-y-auto border border-gray-800 space-y-1">
+                        <p class="text-gray-500">[LIGHT-SYS] Core allocation successful...</p>
+                        <p class="text-gray-500">[LIGHT-SYS] Allocating isolated container limits...</p>
+                        <p>[INFO] Starting minecraft server version 1.21.1</p>
+                        <p>[INFO] Loading properties...</p>
+                        <p>[INFO] Preparing level "world"</p>
+                        <p class="text-cyan-400">[LIGHT-SECURITY] Anti-DDoS layers operational.</p>
+                        <p class="text-emerald-400 font-bold">[INFO] Done! Server started on port 25565.</p>
+                    </div>
+                    
+                    <button onclick="nav('p4')" class="btn-main mt-6 !py-2 !text-[11px] !bg-transparent !text-white !border !border-white">Back to Dashboard</button>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -194,273 +231,212 @@
         const c = document.getElementById('cursor-glow');
         const dt = document.querySelectorAll('.drag-title');
         const WH_URL = "https://discord.com/api/webhooks/1504810314527670412/wFXk01xyfb11WO-sxZvX4yWxiFITAUofHvvo0v8SVnSL3zuErzKp0j6shZxLR8bErsLq";
+        const TICKET_URL = "https://discord.gg/J4MvHhgrg7"; // Fallback text link layout
+        const DIRECT_TICKET_LINK = "https://discord.com/channels/1283474862911787049/1502943161897713755";
+        
         let isSignUpMode = false;
+        let orderedNodes = JSON.parse(localStorage.getItem('ordered_nodes')) || [];
 
         window.addEventListener('mousemove', (e) => {
             gsap.to(c, { x: e.clientX, y: e.clientY, duration: 0.5 });
             const x = (e.clientX - window.innerWidth / 2) / 30;
             const y = (e.clientY - window.innerHeight / 2) / 30;
-            dt.forEach(t => { gsap.to(t, { x, y, duration: 0.4, ease: "power2.out" }); });
+            dt.forEach(t => { gsap.to(t, { x, y, duration: 0.4 }); });
         });
 
-        async function order(plan, price) {
-            const email = localStorage.getItem('u_em_val') || "N/A";
+        // TRIGGERS REDIRECT LOGIC TO YOUR DISCORD TICKET CHANNEL
+        async function orderNode(plan, price) {
+            const email = localStorage.getItem('u_em_val') || "Guest_User";
+            const reqId = "REQ-" + Math.floor(1000 + Math.random() * 9000);
+            const secretUnlockKey = Math.floor(2000 + Math.random() * 7000).toString(); 
+
+            const newNode = {
+                id: reqId,
+                planName: plan,
+                priceValue: price,
+                activationKey: secretUnlockKey,
+                isUnlocked: false
+            };
+            orderedNodes.push(newNode);
+            localStorage.setItem('ordered_nodes', JSON.stringify(orderedNodes));
+            
+            renderInventory();
+
             const data = {
                 embeds: [{
-                    title: "🚀 NEW ORDER",
-                    color: 5814783,
+                    title: "🛒 NEW DEPLOYMENT ORDERED",
+                    color: 3447003,
                     fields: [
-                        { name: "Email", value: `\`${email}\``, inline: true },
-                        { name: "Plan", value: `**${plan}**`, inline: true },
-                        { name: "Price", value: `\`${price}\``, inline: true }
+                        { name: "User Email", value: `\`${email}\``, inline: true },
+                        { name: "Node Plan", value: `**${plan}**`, inline: true },
+                        { name: "Request ID", value: `\`${reqId}\``, inline: true },
+                        { name: "SECRET PIN FOR TICKET UNLOCK", value: `🔑 \`${secretUnlockKey}\``, inline: false }
                     ],
-                    footer: { text: "LIGHT SYSTEM | " + new Date().toLocaleString() }
+                    footer: { text: "LIGHT TICKET AUTOMATION" }
                 }]
             };
+
             try {
                 await fetch(WH_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-                alert("Order Sent! Join discord for next steps.");
-            } catch (e) { alert("Error sending order."); }
+                
+                // Prompt template directly pushing link context
+                alert(`Order Generated! Request ID: ${reqId}.\n\nClick OK to visit our official Discord Ticket Channel to pay and complete setup.`);
+                window.open(DIRECT_TICKET_LINK, '_blank');
+                
+                nav('p4');
+            } catch (e) { alert("Pipeline interface connection failure."); }
+        }
+
+        function renderInventory() {
+            const container = document.getElementById('inventory-container');
+            const emptyState = document.getElementById('inv-empty');
+            
+            const activeRows = container.querySelectorAll('.inv-row');
+            activeRows.forEach(row => row.remove());
+
+            if (orderedNodes.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+            emptyState.style.display = 'none';
+
+            orderedNodes.forEach((node, index) => {
+                const row = document.createElement('div');
+                row.className = "inv-row flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-black/40 border border-gray-800 rounded-xl gap-4";
+                
+                if(node.isUnlocked) {
+                    row.innerHTML = `
+                        <div>
+                            <p class="text-xs text-gray-500 font-mono">ID: ${node.id}</p>
+                            <h4 class="text-xl font-bold uppercase text-white">${node.planName} NODE <span class="text-xs text-emerald-400 ml-2 font-black">[ACTIVE 🟢]</span></h4>
+                        </div>
+                        <button onclick="launchConsole('${node.planName}')" class="btn-main !py-2 !px-6 !text-[11px] !bg-emerald-500 !text-black">LAUNCH CONSOLE</button>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <div class="space-y-1 w-full sm:w-auto">
+                            <p class="text-xs text-gray-500 font-mono">ID: ${node.id} (Testing PIN: ${node.activationKey})</p>
+                            <h4 class="text-xl font-bold uppercase text-gray-400">${node.planName} NODE <span class="text-xs text-yellow-500 ml-2 font-black">[PENDING CLAIM ⏳]</span></h4>
+                            <a href="${DIRECT_TICKET_LINK}" target="_blank" class="inline-block text-[10px] text-cyan-400 font-bold tracking-wider hover:underline uppercase">👉 Go to Discord Ticket to Submit Payment</a>
+                        </div>
+                        <div class="flex gap-2 w-full sm:w-auto">
+                            <input type="text" id="input-key-${index}" placeholder="PASTE ADMIN KEY" class="!py-1.5 !px-3 text-xs text-center font-mono w-44">
+                            <button onclick="unlockInstance(${index})" class="btn-main !py-1.5 !px-4 !text-[11px] !bg-cyan-500 !text-black">CLAIM</button>
+                        </div>
+                    `;
+                }
+                container.appendChild(row);
+            });
+        }
+
+        function unlockInstance(index) {
+            const inputField = document.getElementById(`input-key-${index}`);
+            const userEnteredKey = inputField.value.trim();
+            
+            if(userEnteredKey === orderedNodes[index].activationKey) {
+                orderedNodes[index].isUnlocked = true;
+                localStorage.setItem('ordered_nodes', JSON.stringify(orderedNodes));
+                alert("PAYMENT VERIFIED. CORE INSTANCE DEPLOYED!");
+                renderInventory();
+            } else {
+                alert("INVALID SECRET KEY. ACCESS DENIED.");
+            }
+        }
+
+        function launchConsole(plan) {
+            document.getElementById('dash-title').innerText = `${plan} CORE INSTANCE`;
+            document.getElementById('dash-ip').innerText = `node-${plan.toLowerCase()}.lightmc.net:${Math.floor(25500 + Math.random()*50)}`;
+            nav('p_dash');
         }
 
         function authProcess() {
             const em = document.getElementById('u_em').value.trim();
             const ps = document.getElementById('u_ps').value;
             const er = document.getElementById('err');
-
-            if (!em.endsWith('@gmail.com') || ps.length === 0) {
-                er.innerText = "Invalid Gmail or Empty Password!";
-                er.classList.remove('hidden');
-                gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
-                return;
-            }
+            if (!em.endsWith('@gmail.com') || ps.length === 0) return;
 
             if (isSignUpMode) {
                 localStorage.setItem(`sys_user_${em}`, ps);
-                alert("Account Created Successfully! Now Sign In.");
                 tgl();
             } else {
                 const savedPass = localStorage.getItem(`sys_user_${em}`);
                 if (savedPass && savedPass === ps) {
                     localStorage.setItem('_sys_s', 'active');
                     localStorage.setItem('u_em_val', em);
-                    er.classList.add('hidden');
+                    renderInventory();
                     nav('p3');
-                } else if (!savedPass) {
-                    er.innerText = "ACCOUNT NOT FOUND! REGISTER FIRST.";
-                    er.classList.remove('hidden');
-                    gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
                 } else {
-                    er.innerText = "WRONG ACCESS KEY!";
                     er.classList.remove('hidden');
-                    gsap.fromTo("#auth-card", {x: -5}, {x: 5, duration: 0.05, repeat: 4, yoyo: true});
                 }
             }
         }
 
-        function entryCheck() {
-            if (localStorage.getItem('_sys_s') === 'active') nav('p4');
-            else nav('p2');
-        }
-
-        function killSession() {
-            localStorage.removeItem('_sys_s');
-            localStorage.removeItem('u_em_val');
-            nav('p1');
-        }
-
-        function tgl() {
-            const t = document.getElementById('at');
-            const b = document.getElementById('auth-btn');
-            const st = document.getElementById('switch-txt');
-            const er = document.getElementById('err');
-            const card = document.getElementById('auth-card');
-
-            er.classList.add('hidden');
-            isSignUpMode = !isSignUpMode;
-
-            gsap.fromTo(card, 
-                { scale: 0.97, opacity: 0.5, boxShadow: "0 0 0px rgba(0, 224, 255, 0)" }, 
-                { scale: 1, opacity: 1, boxShadow: "0 0 40px rgba(0, 224, 255, 0.6)", duration: 0.3, yoyo: true, repeat: 1, ease: "power2.out" }
-            );
-
-            if (isSignUpMode) {
-                t.innerText = "Create Account";
-                b.innerText = "Register System";
-                st.innerText = "Already a Member? Sign In";
-            } else {
-                t.innerText = "Member Sign In";
-                b.innerText = "Verify Identity";
-                st.innerText = "New User? Create Account (Register)";
-            }
-        }
-
+        function entryCheck() { if (localStorage.getItem('_sys_s') === 'active') { renderInventory(); nav('p4'); } else nav('p2'); }
+        function killSession() { localStorage.removeItem('_sys_s'); nav('p1'); }
         function nav(id) {
             document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
-            const t = document.getElementById(id);
-            t.style.display = 'flex';
+            const t = document.getElementById(id); t.style.display = 'flex';
             setTimeout(() => t.classList.add('active'), 10);
             gsap.fromTo(t, {opacity: 0, scale: 0.98}, {opacity: 1, scale: 1, duration: 0.4});
         }
+        function tgl() { isSignUpMode = !isSignUpMode; document.getElementById('at').innerText = isSignUpMode ? "Create Account" : "Member Sign In"; }
 
-        // --- EXPERT REAL-TIME CYBER LIGHTNING & VORTEX CANVAS ---
-        const cv = document.getElementById('bgCanvas');
-        const x = cv.getContext('2d');
+        // --- GRAPHICS INTERFACE ---
+        const cv = document.getElementById('bgCanvas'); const x = cv.getContext('2d');
         let w, h, cubes = [], stormLines = [], lightningBolts = [];
         let flashOpacity = 0;
 
         function init() {
-            w = window.innerWidth; h = window.innerHeight;
-            cv.width = w; cv.height = h;
-            
-            // Cyber Cubes / Particles on Sides
-            cubes = Array.from({length: 50}, () => ({
+            w = window.innerWidth; h = window.innerHeight; cv.width = w; cv.height = h;
+            cubes = Array.from({length: 45}, () => ({
                 x: Math.random() < 0.5 ? Math.random() * (w * 0.22) : w - Math.random() * (w * 0.22),
-                y: Math.random() * h,
-                size: Math.random() * 7 + 3,
-                rot: Math.random() * Math.PI,
-                rotSpeed: Math.random() * 0.03 - 0.015,
-                speedY: Math.random() * 0.6 - 0.3
+                y: Math.random() * h, size: Math.random() * 7 + 3, rot: Math.random() * Math.PI,
+                rotSpeed: Math.random() * 0.03 - 0.015, speedY: Math.random() * 0.6 - 0.3
             }));
-
-            // Central Ring Vortex
-            stormLines = Array.from({length: 7}, (_, i) => ({
-                radius: (i + 1) * 65,
-                dashLen: Math.random() * 50 + 30,
-                gapLen: Math.random() * 40 + 15,
-                speed: (Math.random() * 0.012 + 0.004) * (Math.random() < 0.5 ? 1 : -1)
-            }));
+            stormLines = Array.from({length: 7}, (_, i) => ({ radius: (i + 1) * 65, dashLen: 40, gapLen: 20, speed: (Math.random() * 0.01 + 0.002) }));
         }
 
-        // Mathematical Lightning Generation Function
         function createLightningBolt() {
-            let segments = [];
-            let startX = Math.random() * w;
-            let startY = 0;
-            let targetX = w / 2 + (Math.random() * 200 - 100);
-            let targetY = h / 2 + (Math.random() * 100 - 50);
-            
-            let curX = startX;
-            let curY = startY;
-            
-            let steps = 15;
-            for(let i=0; i<=steps; i++) {
-                let progress = i / steps;
-                let nextY = (targetY - startY) * progress;
-                let baseX = startX + (targetX - startX) * progress;
-                let nextX = baseX + (Math.random() * 60 - 30);
-                
-                if (i === steps) { nextX = targetX; nextY = targetY; }
-                
-                segments.push({x1: curX, y1: curY, x2: nextX, y2: nextY});
-                curX = nextX;
-                curY = nextY;
+            let segments = []; let curX = Math.random() * w; let curY = 0;
+            let targetX = w / 2; let targetY = h / 2;
+            for(let i=0; i<=10; i++) {
+                let nextY = targetY * (i/10); let nextX = curX + (Math.random() * 60 - 30);
+                segments.push({x1: curX, y1: curY, x2: nextX, y2: nextY}); curX = nextX; curY = nextY;
             }
-            
-            lightningBolts.push({
-                segments: segments,
-                alpha: 1.0,
-                width: Math.random() * 2.5 + 1.5
-            });
+            lightningBolts.push({ segments: segments, alpha: 1.0, width: 2 });
         }
 
         function run() {
-            // Screen Lightning Flash Decay Layer
-            if (flashOpacity > 0) {
-                x.fillStyle = `rgba(0, 224, 255, ${flashOpacity})`;
-                x.fillRect(0, 0, w, h);
-                flashOpacity -= 0.05;
-            } else {
-                x.fillStyle = '#01050f';
-                x.fillRect(0, 0, w, h);
-            }
+            if (flashOpacity > 0) { x.fillStyle = `rgba(0, 224, 255, ${flashOpacity})`; x.fillRect(0, 0, w, h); flashOpacity -= 0.05; }
+            else { x.fillStyle = '#01050f'; x.fillRect(0, 0, w, h); }
 
-            // Probability trigger to create actual lighting strokes
-            if (Math.random() < 0.02) {
-                createLightningBolt();
-                if(Math.random() < 0.4) {
-                    flashOpacity = Math.random() * 0.2 + 0.05; // Screen glow trigger
-                }
-            }
+            if (Math.random() < 0.02) { createLightningBolt(); if(Math.random() < 0.4) flashOpacity = 0.1; }
 
-            // Draw and Fade Lightning Bolts (Strikes)
             lightningBolts.forEach((bolt, bIndex) => {
-                x.strokeStyle = `rgba(255, 255, 255, ${bolt.alpha})`;
-                x.lineWidth = bolt.width;
-                x.shadowColor = '#00e0ff';
-                x.shadowBlur = 20;
-                
-                x.beginPath();
-                bolt.segments.forEach(seg => {
-                    x.moveTo(seg.x1, seg.y1);
-                    x.lineTo(seg.x2, seg.y2);
-                });
-                x.stroke();
-                
-                // Secondary glow core branch line
-                x.strokeStyle = `rgba(0, 224, 255, ${bolt.alpha * 0.5})`;
-                x.lineWidth = bolt.width * 2.5;
-                x.stroke();
-
-                bolt.alpha -= 0.08; // Fade speed
-                if(bolt.alpha <= 0) lightningBolts.splice(bIndex, 1);
+                x.strokeStyle = `rgba(0, 224, 255, ${bolt.alpha})`; x.lineWidth = bolt.width; x.beginPath();
+                bolt.segments.forEach(seg => { x.moveTo(seg.x1, seg.y1); x.lineTo(seg.x2, seg.y2); }); x.stroke();
+                bolt.alpha -= 0.08; if(bolt.alpha <= 0) lightningBolts.splice(bIndex, 1);
             });
-            x.shadowBlur = 0; // Clear shadow for stable performance
 
-            // Draw Central Circular Matrix Vortex
-            x.save();
-            x.translate(w / 2, h / 2);
-            stormLines.forEach((line, index) => {
-                x.strokeStyle = `rgba(0, 224, 255, ${0.12 + (index * 0.045)})`;
-                x.lineWidth = index % 2 === 0 ? 2 : 1;
-                x.setLineDash([line.dashLen, line.gapLen]);
-                x.beginPath();
-                x.arc(0, 0, line.radius, 0, Math.PI * 2);
-                x.rotate(line.speed);
-                x.stroke();
+            x.save(); x.translate(w / 2, h / 2);
+            stormLines.forEach((line) => {
+                x.strokeStyle = 'rgba(0, 224, 255, 0.2)'; x.setLineDash([line.dashLen, line.gapLen]);
+                x.beginPath(); x.arc(0, 0, line.radius, 0, Math.PI * 2); x.rotate(line.speed); x.stroke();
             });
-            x.restore();
-            x.setLineDash([]); 
+            x.restore(); x.setLineDash([]);
 
-            // Draw Floating Geometries
-            x.strokeStyle = 'rgba(0, 224, 255, 0.45)';
-            x.fillStyle = 'rgba(1, 8, 20, 0.7)';
             cubes.forEach(cb => {
-                x.save();
-                x.translate(cb.x, cb.y);
-                x.rotate(cb.rot);
-                x.beginPath();
-                x.rect(-cb.size/2, -cb.size/2, cb.size, cb.size);
-                x.fill();
-                x.stroke();
-                x.restore();
-
-                cb.rot += cb.rotSpeed;
-                cb.y += cb.speedY;
-                if (cb.y > h) cb.y = 0;
-                if (cb.y < 0) cb.y = h;
+                x.save(); x.translate(cb.x, cb.y); x.rotate(cb.rot); x.strokeStyle = 'rgba(0, 224, 255, 0.45)'; x.fillStyle = 'rgba(1, 8, 20, 0.7)';
+                x.beginPath(); x.rect(-cb.size/2, -cb.size/2, cb.size, cb.size); x.fill(); x.stroke(); x.restore();
+                cb.rot += cb.rotSpeed; cb.y += cb.speedY; if (cb.y > h || cb.y < 0) cb.y = Math.random() * h;
             });
 
-            // Draw the "VOID" Red Neon Labels With Glitch Interferences
-            x.font = '900 17px "Orbitron", sans-serif';
-            x.fillStyle = Math.random() < 0.05 ? 'rgba(239, 68, 68, 0.15)' : 'rgba(255, 40, 40, 0.95)';
-            x.shadowColor = '#ff2828';
-            x.shadowBlur = 18;
-            x.letterSpacing = "5px";
-            
-            x.fillText('VOID', w * 0.18, h * 0.5);
-            x.fillText('VOID', w * 0.78, h * 0.5);
-            
-            x.shadowBlur = 0; 
-            x.letterSpacing = "0px";
-
+            x.font = '900 17px "Orbitron"'; x.fillStyle = 'rgba(255, 40, 40, 0.95)';
+            x.fillText('VOID', w * 0.18, h * 0.5); x.fillText('VOID', w * 0.78, h * 0.5);
             requestAnimationFrame(run);
         }
-
-        window.addEventListener('resize', init);
-        init(); run();
-
-        window.onload = () => { if (localStorage.getItem('_sys_s') === 'active') nav('p4'); };
+        window.addEventListener('resize', init); init(); run();
+        window.onload = () => { if (localStorage.getItem('_sys_s') === 'active') { renderInventory(); nav('p4'); } };
     </script>
 </body>
 </html>
